@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dbs.ce.mapper.EvaluateMapper" >
+  <resultMap id="BaseResultMap" type="com.dbs.ce.entity.Evaluate" >
+    <id column="Sno" property="sno" jdbcType="CHAR" />
+    <id column="Cno" property="cno" jdbcType="CHAR" />
+    <result column="Edate" property="edate" jdbcType="CHAR" />
+    <result column="Econtent" property="econtent" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Sno, Cno, Edate, Econtent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dbs.ce.entity.EvaluateKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate
+    where Sno = #{sno,jdbcType=CHAR}
+      and Cno = #{cno,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dbs.ce.entity.EvaluateKey" >
+    delete from evaluate
+    where Sno = #{sno,jdbcType=CHAR}
+      and Cno = #{cno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dbs.ce.entity.Evaluate" >
+    insert into evaluate (Sno, Cno, Edate, Econtent
+      )
+    values (#{sno,jdbcType=CHAR}, #{cno,jdbcType=CHAR}, #{edate,jdbcType=CHAR}, #{econtent,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dbs.ce.entity.Evaluate" >
+    insert into evaluate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sno != null" >
+        Sno,
+      </if>
+      <if test="cno != null" >
+        Cno,
+      </if>
+      <if test="edate != null" >
+        Edate,
+      </if>
+      <if test="econtent != null" >
+        Econtent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sno != null" >
+        #{sno,jdbcType=CHAR},
+      </if>
+      <if test="cno != null" >
+        #{cno,jdbcType=CHAR},
+      </if>
+      <if test="edate != null" >
+        #{edate,jdbcType=CHAR},
+      </if>
+      <if test="econtent != null" >
+        #{econtent,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dbs.ce.entity.Evaluate" >
+    update evaluate
+    <set >
+      <if test="edate != null" >
+        Edate = #{edate,jdbcType=CHAR},
+      </if>
+      <if test="econtent != null" >
+        Econtent = #{econtent,jdbcType=CHAR},
+      </if>
+    </set>
+    where Sno = #{sno,jdbcType=CHAR}
+      and Cno = #{cno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dbs.ce.entity.Evaluate" >
+    update evaluate
+    set Edate = #{edate,jdbcType=CHAR},
+      Econtent = #{econtent,jdbcType=CHAR}
+    where Sno = #{sno,jdbcType=CHAR}
+      and Cno = #{cno,jdbcType=CHAR}
+  </update>
+</mapper>
