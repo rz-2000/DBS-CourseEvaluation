@@ -26,7 +26,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //}
 
 @SpringBootApplication
-@MapperScan("com.dbs.ce.mapper")//使用MapperScan批量扫描所有的Mapper接口；
+@MapperScan("com.dbs.ce.mapper")//使用MapperScan批量扫描所有的Mapper接口
 public class CEApplication {
 
     public static void main(String[] args) {
