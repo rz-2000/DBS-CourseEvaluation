@@ -1,0 +1,3 @@
+[submodule "DBS-CE/src/main/resources/static"]
+	path = DBS-CE/src/main/resources/static
+	url = https://github.com/OhnkytaBlabdey/ouc-databasesystem-2020-frontend.git

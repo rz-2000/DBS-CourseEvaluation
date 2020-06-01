@@ -2,14 +2,17 @@ server:
   port: 8081
 
 spring:
+  profiles:
+    active: dev
   jackson:
     default-property-inclusion: non_null
   # 数据库连接配置
   datasource:
     username: qwq
     password: 2020shujukuxitong
-    url: jdbc:mysql://47.102.140.37:3306/ouc2020?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=CST&allowMultiQueries=true
     driver-class-name: com.mysql.cj.jdbc.Driver
+  resources:
+    static-locations: classpath:/static/dist
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
@@ -24,3 +27,18 @@ logging:
     com:
       example:
         mapper: debug
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://47.102.140.37:3306/ouc2020?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=CST&allowMultiQueries=true
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://47.102.140.37:3306/ouc2020?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=CST&allowMultiQueries=true
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ouc2020?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=CST&allowMultiQueries=true
